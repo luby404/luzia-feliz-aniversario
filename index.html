@@ -238,25 +238,34 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(236, 72, 153, 0.15) 100%);
+            font-size: 120px;
+            backdrop-filter: blur(10px);
         }
 
-        .card-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
+        .card-image .emoji {
+            animation: emojiJump 2s ease-in-out infinite;
+            transition: transform 0.3s ease;
         }
 
-        .card.visible .card-image img {
-            transform: scale(1.05);
+        .card.visible .card-image .emoji {
+            animation: emojiJumpBig 2s ease-in-out infinite;
         }
 
-        .card-image::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
-            z-index: 2;
+        @keyframes emojiJump {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-30px) scale(1.1); }
+        }
+
+        @keyframes emojiJumpBig {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            25% { transform: translateY(-40px) rotate(-5deg) scale(1.15); }
+            50% { transform: translateY(0) rotate(5deg) scale(1.2); }
+            75% { transform: translateY(-30px) rotate(-3deg) scale(1.15); }
+            100% { transform: translateY(0) rotate(0deg) scale(1); }
         }
 
         .card-image::after {
@@ -269,6 +278,7 @@
             z-index: 3;
             opacity: 0;
             animation: borderGlow 2s ease-in-out infinite;
+            pointer-events: none;
         }
 
         @keyframes borderGlow {
@@ -472,7 +482,7 @@
         <!-- Card 1 -->
         <div class="card">
             <div class="card-image">
-                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500&h=500&fit=crop" alt="Celebração">
+                <span class="emoji">🌟</span>
             </div>
             <div class="card-content">
                 <div class="card-accent"></div>
@@ -484,7 +494,7 @@
         <!-- Card 2 -->
         <div class="card">
             <div class="card-image">
-                <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=500&h=500&fit=crop" alt="Amizade">
+                <span class="emoji">💖</span>
             </div>
             <div class="card-content">
                 <div class="card-accent"></div>
@@ -496,7 +506,7 @@
         <!-- Card 3 -->
         <div class="card">
             <div class="card-image">
-                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=500&h=500&fit=crop" alt="Força">
+                <span class="emoji">💪</span>
             </div>
             <div class="card-content">
                 <div class="card-accent"></div>
@@ -508,7 +518,7 @@
         <!-- Card 4 -->
         <div class="card">
             <div class="card-image">
-                <img src="https://images.unsplash.com/photo-1516387938303-90b7b0c2e1dd?w=500&h=500&fit=crop" alt="Graças">
+                <span class="emoji">🙏</span>
             </div>
             <div class="card-content">
                 <div class="card-accent"></div>
@@ -616,11 +626,4 @@
 
         // Criar confete inicial
         window.addEventListener('load', () => {
-            setTimeout(createConfetti, 500);
-        });
-
-        // Som de celebração (opcional - comentado por padrão)
-        // function playSound() {
-        //     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
-        //     const oscillator = audioContext.createOscillator();
-        //     c
+     
