@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversário Luzia! 🎉</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #3b82f6;
+            --primary-pink: #ec4899;
+            --light-pink: #f472b6;
+            --white: #ffffff;
+            --dark-blue: #1e40af;
+            --light-blue: #60a5fa;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(-45deg, #3b82f6, #ec4899, #60a5fa, #f472b6);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            color: #333;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Efeito de fundo animado com formas flutuantes */
+        body::before {
+            content: '';
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 192, 203, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -100px;
+            left: -100px;
+            animation: floatBlob 8s ease-in-out infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            bottom: -150px;
+            right: -150px;
+            animation: floatBlobReverse 10s ease-in-out infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes floatBlob {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, 30px) scale(1.1); }
+        }
+
+        @keyframes floatBlobReverse {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-40px, -40px) scale(1.15); }
+        }
+
+        /* Partículas de confete */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+        }
+
+        .confetti.pink {
+            background-color: var(--primary-pink);
+        }
+
+        .confetti.blue {
+            background-color: var(--primary-blue);
+        }
+
+        .confetti.white {
+            background-color: var(--white);
+        }
+
+        /* Header de boas-vindas */
+        .header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            color: var(--white);
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            animation: slideDown 0.8s ease-out;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header .subtitle {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-out 0.3s forwards;
+            opacity: 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .emoji-float {
+            font-size: 3rem;
+            animation: float 3s ease-in-out infinite;
+            margin: 0 15px;
+            display: inline-block;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            font-size: 0.9rem;
+            animation: bounce 2s infinite;
+            z-index: 2;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* Container de cards */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 60px 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 40px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:nth-child(even) {
+            grid-template-columns: 1fr 1fr;
+            direction: rtl;
+        }
+
+        .card:nth-child(even) > * {
+            direction: ltr;
+        }
+
+        .card-image {
+            position: relative;
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .card.visible .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+            z-index: 2;
+        }
+
+        .card-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 3px solid;
+            border-image: linear-gradient(135deg, var(--primary-blue), var(--primary-pink)) 1;
+            border-radius: 15px;
+            z-index: 3;
+            opacity: 0;
+            animation: borderGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+        .card-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .card-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        .card-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .card-accent {
+            width: 60px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-blue), var(--primary-pink));
+            border-radius: 3px;
+            margin-bottom: 20px;
+        }
+
+        /* Seção final */
+        .final-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 60px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            margin: 80px auto;
+            max-width: 800px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .final-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-pink), var(--light-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 30px;
+            animation: scaleIn 0.8s ease-out;
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .final-section p {
+            font-size: 1.3rem;
+            color: var(--white);
+            margin-bottom: 40px;
+            font-weight: 300;
+            line-height: 2;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .balloons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .balloon {
+            font-size: 4rem;
+            animation: balloonFloat 4s ease-in-out infinite;
+        }
+
+        .balloon:nth-child(1) { animation-delay: 0s; }
+        .balloon:nth-child(2) { animation-delay: 0.5s; }
+        .balloon:nth-child(3) { animation-delay: 1s; }
+        .balloon:nth-child(4) { animation-delay: 1.5s; }
+        .balloon:nth-child(5) { animation-delay: 2s; }
+
+        @keyframes balloonFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .hearts {
+            margin: 40px 0;
+            font-size: 2rem;
+        }
+
+        .heart {
+            animation: heartBeat 1s ease-in-out infinite;
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+        .heart:nth-child(1) { animation-delay: 0s; }
+        .heart:nth-child(2) { animation-delay: 0.2s; }
+        .heart:nth-child(3) { animation-delay: 0.4s; }
+        .heart:nth-child(4) { animation-delay: 0.6s; }
+        .heart:nth-child(5) { animation-delay: 0.8s; }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.5rem;
+            }
+
+            .header .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .card {
+                grid-template-columns: 1fr;
+            }
+
+            .card:nth-child(even) {
+                direction: ltr;
+            }
+
+            .card-image {
+                height: 250px;
+            }
+
+            .card-content h2 {
+                font-size: 1.5rem;
+            }
+
+            .card-content p {
+                font-size: 1rem;
+            }
+
+            .final-section {
+                padding: 40px 20px;
+            }
+
+            .final-section h1 {
+                font-size: 2.5rem;
+            }
+
+            .final-section p {
+                font-size: 1rem;
+            }
+
+            .balloon {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <section class="header">
+        <h1>
+            <span class="emoji-float">🎉</span>
+            Feliz Aniversário
+            <span class="emoji-float">🎂</span>
+        </h1>
+        <p class="subtitle">
+            <span class="emoji-float">✨</span>
+            LUZIA
+            <span class="emoji-float">✨</span>
+        </p>
+        <div class="scroll-hint">↓ Role para baixo ↓</div>
+    </section>
+
+    <!-- Container de Cards -->
+    <div class="container">
+        <!-- Card 1 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=500&h=500&fit=crop" alt="Celebração">
+            </div>
+            <div class="card-content">
+                <div class="card-accent"></div>
+                <h2>Você é Incrível!</h2>
+                <p>Luzia, você é aquele tipo de pessoa que ilumina qualquer lugar por onde passa. Sua energia contagiante, sua risada genuína e sua capacidade de fazer todo mundo se sentir especial é algo raro e precioso. Neste dia, queremos te lembrar o quanto você é importante para todos que te conhecem. Você merece ser celebrada todos os dias!</p>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=500&h=500&fit=crop" alt="Amizade">
+            </div>
+            <div class="card-content">
+                <div class="card-accent"></div>
+                <h2>Sua Amizade é Ouro</h2>
+                <p>Ter você como amiga é um presente que a vida nos deu. Você está sempre lá nos momentos importantes, com uma palavra de conforto, uma risada nos momentos difíceis e uma celebração sincera nos momentos felizes. Sua lealdade e genuinidade são raríssimas. Obrigado por ser quem você é, todos os dias.</p>
+            </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=500&h=500&fit=crop" alt="Força">
+            </div>
+            <div class="card-content">
+                <div class="card-accent"></div>
+                <h2>Sua Força Nos Inspira</h2>
+                <p>Não importa os desafios que enfrentamos, você sempre encontra uma forma de seguir em frente com a cabeça erguida. Sua coragem, seu otimismo e sua determinação são inspiradores. Você nos ensina que é possível ser forte e delicada ao mesmo tempo, que é possível sonhar alto e trabalhar duro para alcançar. Você é nosso exemplo!</p>
+            </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="card">
+            <div class="card-image">
+                <img src="https://images.unsplash.com/photo-1516387938303-90b7b0c2e1dd?w=500&h=500&fit=crop" alt="Graças">
+            </div>
+            <div class="card-content">
+                <div class="card-accent"></div>
+                <h2>Obrigado por Tudo</h2>
+                <p>Obrigado por cada conversa tardia, cada conselho sincero, cada abraço quando precisávamos, cada sorriso que compartilhamos. Obrigado por acreditar na gente quando nem sabíamos acreditar em nós mesmos. Obrigado por ser exatamente quem você é. Você deixou marcas profundas em nossos corações, e estamos eternamente gratos por isso.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção Final -->
+    <section class="final-section">
+        <div class="balloons">
+            <span class="balloon">🎈</span>
+            <span class="balloon">🎈</span>
+            <span class="balloon">🎈</span>
+            <span class="balloon">🎈</span>
+            <span class="balloon">🎈</span>
+        </div>
+
+        <h1>Feliz Aniversário, Luzia!</h1>
+
+        <p>
+            Que este novo ano seja cheio de momentos felizes,<br>
+            de realizações, de sorrisos e de tudo aquilo que você merece.<br>
+            <br>
+            Que você continue sendo essa pessoa maravilhosa que é,<br>
+            iluminando a vida de todos ao seu redor.<br>
+            <br>
+            <strong>Nós te amamos! 🌟</strong>
+        </p>
+
+        <div class="hearts">
+            <span class="heart">💛</span>
+            <span class="heart">💜</span>
+            <span class="heart">💙</span>
+            <span class="heart">💗</span>
+            <span class="heart">💖</span>
+        </div>
+    </section>
+
+    <script>
+        // Função para criar confete
+        function createConfetti() {
+            const confettiCount = 50;
+            for (let i = 0; i < confettiCount; i++) {
+                const confetti = document.createElement('div');
+                confetti.classList.add('confetti');
+                confetti.classList.add(['pink', 'blue', 'white'][Math.floor(Math.random() * 3)]);
+                
+                confetti.style.left = Math.random() * 100 + '%';
+                confetti.style.top = -10 + 'px';
+                confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0%';
+                
+                document.body.appendChild(confetti);
+                
+                const duration = Math.random() * 3 + 2;
+                const horizontalMove = (Math.random() - 0.5) * 200;
+                
+                confetti.animate([
+                    { 
+                        transform: `translate(0, 0) rotate(0deg)`,
+                        opacity: 1
+                    },
+                    { 
+                        transform: `translate(${horizontalMove}px, ${window.innerHeight + 100}px) rotate(360deg)`,
+                        opacity: 0
+                    }
+                ], {
+                    duration: duration * 1000,
+                    easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                });
+                
+                setTimeout(() => confetti.remove(), duration * 1000);
+            }
+        }
+
+        // Criar confete a cada scroll
+        let lastConfettiTime = 0;
+        window.addEventListener('scroll', () => {
+            const now = Date.now();
+            if (now - lastConfettiTime > 1000) {
+                createConfetti();
+                lastConfettiTime = now;
+            }
+        });
+
+        // Observar cards para animação de entrada
+        const cards = document.querySelectorAll('.card');
+        const observerOptions = {
+            threshold: 0.3,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const cardObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        cards.forEach(card => {
+            cardObserver.observe(card);
+        });
+
+        // Criar confete inicial
+        window.addEventListener('load', () => {
+            setTimeout(createConfetti, 500);
+        });
+
+        // Som de celebração (opcional - comentado por padrão)
+        // function playSound() {
+        //     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        //     const oscillator = audioContext.createOscillator();
+        //     c
